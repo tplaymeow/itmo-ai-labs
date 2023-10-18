@@ -1,14 +1,46 @@
 import CodableCSV
 import Foundation
+import LinearRegression
 import Matrix
+import MetaCodable
+import Plot
+import StandardScaler
 import Utils
 
-let url = URL(fileURLWithPath: CommandLine.arguments[1])
+@Codable
+struct Item {
+  enum ExtracurricularActivities: String, Codable {
+    case yes = "Yes"
+    case no = "No"
+  }
+
+  @CodedAt("Hours Studied")
+  let hoursStudied: Double
+
+  @CodedAt("Previous Scores")
+  let previousScores: Double
+
+  @CodedAt("Extracurricular Activities")
+  let extracurricularActivities: ExtracurricularActivities
+
+  @CodedAt("Sleep Hours")
+  let sleepHours: Double
+
+  @CodedAt("Sample Question Papers Practiced")
+  let sampleQuestionPapersPracticed: Double
+
+  @CodedAt("Performance Index")
+  let performanceIndex: Double
+}
+
+let url = URL(
+  fileURLWithPath:
+    "/Users/tplaymeow/Desktop/itmo-ai-labs/Datasets/StudentPerformance/Student_Performance.csv")
 let data = try Data(contentsOf: url)
 let items = try CSVDecoder { $0.headerStrategy = .firstLine }
   .decode([Item].self, from: data)
 
-let output = CommandLine.arguments[2]
+let output = "/Users/tplaymeow/Desktop/itmo-ai-labs/Datasets/StudentPerformance/Output"
 
 try boxplot(
   x: items.map(\.hoursStudied),
@@ -95,6 +127,46 @@ try run(
         $0.extracurricularActivities == .yes ? 1.0 : 0.0,
         $0.sleepHours,
         $0.sampleQuestionPapersPracticed,
+      ]
+    }),
+  testY: Matrix(column: testItems.map(\.performanceIndex))
+)
+
+try run(
+  trainX: try Matrix(
+    rows: trainItems.map {
+      [
+        $0.previousScores,
+        $0.extracurricularActivities == .yes ? 1.0 : 0.0,
+        $0.sampleQuestionPapersPracticed,
+      ]
+    }),
+  trainY: Matrix(column: trainItems.map(\.performanceIndex)),
+  testX: try Matrix(
+    rows: testItems.map {
+      [
+        $0.previousScores,
+        $0.extracurricularActivities == .yes ? 1.0 : 0.0,
+        $0.sampleQuestionPapersPracticed,
+      ]
+    }),
+  testY: Matrix(column: testItems.map(\.performanceIndex))
+)
+
+try run(
+  trainX: try Matrix(
+    rows: trainItems.map {
+      [
+        $0.previousScores,
+        $0.sleepHours,
+      ]
+    }),
+  trainY: Matrix(column: trainItems.map(\.performanceIndex)),
+  testX: try Matrix(
+    rows: testItems.map {
+      [
+        $0.previousScores,
+        $0.sleepHours,
       ]
     }),
   testY: Matrix(column: testItems.map(\.performanceIndex))

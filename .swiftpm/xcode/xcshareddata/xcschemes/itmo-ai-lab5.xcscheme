@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "itmo-ai-lab4"
-               BuildableName = "itmo-ai-lab4"
-               BlueprintName = "itmo-ai-lab4"
+               BlueprintIdentifier = "itmo-ai-lab5"
+               BuildableName = "itmo-ai-lab5"
+               BlueprintName = "itmo-ai-lab5"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -69,22 +69,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "itmo-ai-lab4"
-            BuildableName = "itmo-ai-lab4"
-            BlueprintName = "itmo-ai-lab4"
+            BlueprintIdentifier = "itmo-ai-lab5"
+            BuildableName = "itmo-ai-lab5"
+            BlueprintName = "itmo-ai-lab5"
             ReferencedContainer = "container:">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "/Users/tplaymeow/Desktop/itmo-ai-labs/Student_Performance.csv"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "/Users/tplaymeow/Desktop/itmo-ai-labs/Output"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -96,9 +86,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "itmo-ai-lab4"
-            BuildableName = "itmo-ai-lab4"
-            BlueprintName = "itmo-ai-lab4"
+            BlueprintIdentifier = "itmo-ai-lab5"
+            BuildableName = "itmo-ai-lab5"
+            BlueprintName = "itmo-ai-lab5"
             ReferencedContainer = "container:">
          </BuildableReference>
       </BuildableProductRunnable>

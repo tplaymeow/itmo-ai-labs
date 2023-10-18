@@ -1,6 +1,6 @@
 import Foundation
 
-internal func boxplot(
+public func boxplot(
   x: [Double],
   output: String
 ) throws {
@@ -28,7 +28,7 @@ internal func boxplot(
   }
 }
 
-internal func scatter(
+public func scatter(
   x: [Double],
   y: [Double],
   output: String
